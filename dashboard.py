@@ -39,13 +39,13 @@ fig_mapa_receita = px.scatter_geo(receita_estado,
                                   title = 'Receita por estado')
 
 fig_receita_mensal = px.line(receita_mensal,
-                                                        x = 'Mes',
-                                                        y = 'Preço',
-                                                        markers = True,
-                                                        range_y = (0, receita_mensal.max()),
-                                                        color='Ano',
-                                                        line_dash = 'Ano',
-                                                        title = 'Receita mensal')
+                             x = 'Mes',
+                             y = 'Preço',
+                             markers = True,
+                             range_y = (0, receita_mensal.max()),
+                             color='Ano',
+                             line_dash = 'Ano',
+                             title = 'Receita mensal')
 
 fig_receita_mensal.update_layout(yaxis_title = 'Receita')
 
