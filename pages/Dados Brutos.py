@@ -75,3 +75,4 @@ with coluna1:
 
 with coluna2:
     st.download_button('Fazer o download da tabela em csv', data = converte_csv(dados_filtrados), file_name = nome_arquivo, mime = 'text/csv', on_click = mensagem_sucesso)
+1
