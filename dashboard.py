@@ -15,13 +15,12 @@ def formata_numero(valor, prefixo = ''):
     return f'{prefixo} {valor:.2f} milhões'
 
 st.title('DASHBOARD DE VENDAS :shopping_trolley:')
-st.divider()
 
 url = 'https://labdados.com/produtos'
 regioes = ['Brasil', 'Centro-Oeste', 'Nordeste', 'Norte', 'Sudeste', 'Sul']
 
 st.sidebar.title('Filtros')
-regiao = st.sidebar.selectbox('Região', regioes )
+regiao = st.sidebar.selectbox('Região', regioes)
 
 if regiao == 'Brasil':
     regiao = ''
@@ -29,13 +28,12 @@ if regiao == 'Brasil':
 todos_anos = st.sidebar.checkbox('Dados de todo o periodo', value = True)
 if todos_anos:
     ano = ''
-
 else:
     ano = st.sidebar.slider('Ano', 2020, 2023)
 
-query_string = {'Região':regiao.lower(), 'Ano':ano}
+query_string = {'regiao':regiao.lower(), 'ano':ano}
+response = requests.get(url, params= query_string)
 
-response = requests.get(url, params = query_string)
 dados = pd.DataFrame.from_dict(response.json())
 dados['Data da Compra'] = pd.to_datetime(dados['Data da Compra'], format = '%d/%m/%Y')
 
